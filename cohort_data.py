@@ -46,9 +46,23 @@ def sort_by_cohort(filename):
 
     f = open(filename)
     for student in f:
-        student_list = student.split("|")
-        # ghosts = [student for student in f if len(student[4])< 2]
-        print (ghosts)
+        student_list = student.rstrip().split("|")
+        # for x in student_list:
+        if student_list[4] == "Winter 2016":
+            winter_16.append(student_list[0] + " " + student_list[1])
+        if student_list[4] == "Spring 2016":
+            spring_16.append(student_list[0] + " " + student_list[1])
+        if student_list[4] == "Summer 2016":
+            summer_16.append(student_list[0] + " " + student_list[1])
+        if student_list[4] == "Fall 2015":
+            fall_15.append(student_list[0] + " " + student_list[1])
+        if student_list[4] == "G":
+            ghosts.append(student_list[0] + " " + student_list[1])
+
+    all_students.append([fall_15] + [winter_16] + [spring_16] + summer_16 + ghosts)
+
+    # print (student_list)
+    # print (winter_16)
     return all_students
 
 
